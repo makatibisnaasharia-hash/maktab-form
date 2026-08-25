@@ -1,4 +1,4 @@
-const CACHE_NAME = "maktab-form-v1";
+const CACHE_NAME = "maktab-form-v2";
 
 const FILES_TO_CACHE = [
   "./",
