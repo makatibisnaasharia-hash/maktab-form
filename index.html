@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+  <title>فرم بازدید و ارزیابی مکاتب</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="preconnect"
+        href="https://fonts.googleapis.com">
+
+  <link rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+  <style>
+
+    body {
+      font-family: 'Vazirmatn', sans-serif;
+    }
+
+    input,
+    textarea {
+      font-family: inherit;
+    }
+
+    .rating-option {
+      transition: all 0.2s ease;
+    }
+
+    .rating-option:has(input:checked) {
+      background-color: #dcfce7;
+      border-color: #16a34a;
+      color: #166534;
+      font-weight: 700;
+    }
+
+    .submit-btn {
+      transition: all 0.2s ease;
+    }
+
+    .submit-btn:active {
+      transform: scale(0.98);
+    }
+
+  </style>
+
+</head>
+
+<body class="bg-gray-100 min-h-screen p-3 md:p-6">
+
+<div class="max-w-2xl mx-auto">
+
+  <!-- کارت اصلی -->
+  <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+
+    <!-- Header -->
+    <div class="bg-gradient-to-l from-green-900 to-green-700 text-white p-5 text-center">
+
+      <h1 class="text-lg md:text-xl font-bold leading-8">
+        فرم بازدید و ارزیابی فعالیت‌های آموزشی،
+        تربیتی و نظم و انضباط مکاتب
+      </h1>
+
+      <div class="mt-2 text-green-100 font-medium">
+        جمعیت العلماء اثناعشریه کرگل
+      </div>
+
+    </div>
+
+
+    <form id="evaluationForm"
+          class="p-4 md:p-6 space-y-6">
+
+
+      <!-- مشخصات عمومی -->
+      <section>
+
+        <div class="bg-gray-100 rounded-xl p-4 space-y-4">
+
+          <h2 class="font-bold text-gray-800 border-b pb-2">
+            📋 مشخصات عمومی
+          </h2>
+
+          <div>
+
+            <label class="block text-sm font-bold text-gray-700 mb-1">
+              نام مکتب *
+            </label>
+
+            <input
+              type="text"
+              id="schoolName"
+              required
+              class="w-full rounded-lg border border-gray-300 p-3 bg-white focus:ring-2 focus:ring-green-500 outline-none"
+              placeholder="نام مکتب را وارد کنید">
+
+          </div>
+
+
+          <div>
+
+            <label class="block text-sm font-bold text-gray-700 mb-1">
+              آدرس مکتب *
+            </label>
+
+            <input
+              type="text"
+              id="schoolAddress"
+              required
+              class="w-full rounded-lg border border-gray-300 p-3 bg-white focus:ring-2 focus:ring-green-500 outline-none"
+              placeholder="آدرس مکتب">
+
+          </div>
+
+
+          <div>
+
+            <label class="block text-sm font-bold text-gray-700 mb-1">
+              تاریخ بازدید *
+            </label>
+
+            <input
+    type="text"
+    id="visitDate"
+    required
+    placeholder="22/08/2026"
+    class="w-full rounded-lg border border-gray-300 p-3 bg-white focus:ring-2 focus:ring-green-500 outline-none">
+
+          </div><div>
+    <label class="block text-sm font-bold text-gray-700">
+        تعداد طلاب
+    </label>
+
+    <div class="grid grid-cols-2 gap-3 mt-1">
+
+        <div>
+            <label class="block text-xs text-gray-600 mb-1">
+                پسر
+            </label>
+            <input
+                type="number"
+                id="studentBoys"
+                min="0"
+                placeholder="تعداد پسر"
+                class="block w-full rounded-lg border-gray-300 shadow-sm p-2.5 text-sm bg-white focus:ring-2 focus:ring-green-500"
+            >
+        </div>
+
+        <div>
+            <label class="block text-xs text-gray-600 mb-1">
+                دختر
+            </label>
+            <input
+                type="number"
+                id="studentGirls"
+                min="0"
+                placeholder="تعداد دختر"
+                class="block w-full rounded-lg border-gray-300 shadow-sm p-2.5 text-sm bg-white focus:ring-2 focus:ring-green-500"
+            >
+        </div>
+
+    </div>
+</div>
+
+        </div>
+
+      </section>
+
+
+      <!-- فعالیت‌های آموزشی -->
+      <section>
+
+        <h2 class="bg-blue-800 text-white rounded-lg p-3 font-bold">
+          🟢 ارزیابی فعالیت‌های آموزشی
+        </h2>
+
+        <div id="eduContainer"
+             class="mt-4 space-y-3">
+        </div>
+
+      </section>
+
+
+      <!-- نظم و انضباط -->
+      <section>
+
+        <h2 class="bg-teal-800 text-white rounded-lg p-3 font-bold">
+          🔵 ارزیابی نظم و انضباط
+        </h2>
+
+        <div id="orderContainer"
+             class="mt-4 space-y-3">
+        </div>
+
+      </section>
+
+
+      <!-- نظرات کمیته -->
+      <section class="bg-yellow-50 border border-yellow-200 rounded-xl p-4">
+
+        <h2 class="font-bold text-yellow-900 border-b pb-2">
+          🔸 نظرات و پیشنهادات کمیته مکتب
+        </h2>
+
+        <div class="mt-4 space-y-4">
+
+          <div>
+
+            <label class="block text-sm font-bold text-gray-700 mb-1">
+              نقاط قوت
+            </label>
+
+            <textarea
+              id="strengths"
+              rows="3"
+              class="w-full rounded-lg border border-gray-300 p-3 outline-none focus:ring-2 focus:ring-yellow-500"
+              placeholder="نقاط قوت مکتب..."></textarea>
+
+          </div>
+
+
+          <div>
+
+            <label class="block text-sm font-bold text-gray-700 mb-1">
+              مشکلات و چالش‌ها
+            </label>
+
+            <textarea
+              id="challenges"
+              rows="3"
+              class="w-full rounded-lg border border-gray-300 p-3 outline-none focus:ring-2 focus:ring-yellow-500"
+              placeholder="مشکلات و چالش‌ها..."></textarea>
+
+          </div>
+
+
+          <div>
+
+            <label class="block text-sm font-bold text-gray-700 mb-1">
+              پیشنهادات
+            </label>
+
+            <textarea
+              id="suggestions"
+              rows="3"
+              class="w-full rounded-lg border border-gray-300 p-3 outline-none focus:ring-2 focus:ring-yellow-500"
+              placeholder="پیشنهادات..."></textarea>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- نتیجه نهایی -->
+      <section class="bg-orange-50 border border-orange-200 rounded-xl p-4">
+
+        <h2 class="font-bold text-orange-900 border-b pb-2">
+          🔸 نتیجه‌گیری نهایی ارزیاب
+        </h2>
+
+        <div id="finalResultContainer"
+             class="grid grid-cols-2 md:grid-cols-4 gap-2 mt-4">
+
+          <label class="rating-option border rounded-lg p-3 bg-white text-center cursor-pointer">
+
+            <input
+              type="radio"
+              name="finalResult"
+              value="عالی"
+              required>
+
+            عالی
+
+          </label>
+
+
+          <label class="rating-option border rounded-lg p-3 bg-white text-center cursor-pointer">
+
+            <input
+              type="radio"
+              name="finalResult"
+              value="خوب">
+
+            خوب
+
+          </label>
+
+
+          <label class="rating-option border rounded-lg p-3 bg-white text-center cursor-pointer">
+
+            <input
+              type="radio"
+              name="finalResult"
+              value="متوسط">
+
+            متوسط
+
+          </label>
+
+
+          <label class="rating-option border rounded-lg p-3 bg-white text-center cursor-pointer">
+
+            <input
+              type="radio"
+              name="finalResult"
+              value="ضعیف">
+
+            ضعیف
+
+          </label>
+
+        </div>
+
+
+        <div class="mt-4">
+
+          <label class="block text-sm font-bold text-gray-700 mb-1">
+            جمع‌بندی و نظر ارزیاب
+          </label>
+
+          <textarea
+  id="finalComment"
+  rows="4"
+  required
+  class="w-full rounded-lg border border-gray-300 p-3 bg-white focus:ring-2 focus:ring-orange-500 outline-none"
+  placeholder="لطفاً جمع‌بندی و نظر ارزیاب را حتماً وارد کنید..."></textarea>
+
+        </div>
+
+      </section>
+
+
+      <!-- اطلاعات تکمیلی -->
+      <section class="bg-gray-100 rounded-xl p-4">
+
+        <h2 class="font-bold text-gray-800 border-b pb-2">
+          ✍️ اطلاعات تکمیلی
+        </h2>
+
+
+        <div class="mt-4 space-y-4">
+
+          <!-- ارزیاب -->
+
+          <div>
+
+            <h3 class="font-bold text-sm text-green-800 mb-2">
+              👤 ارزیاب
+            </h3>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+
+              <input
+                type="text"
+                id="inspectorName"
+                required
+                placeholder="نام ارزیاب *"
+                class="p-3 rounded-lg border border-gray-300 bg-white">
+
+              <input
+                type="text"
+                id="inspectorPhone"
+                required
+                placeholder="شماره تماس ارزیاب *"
+                class="p-3 rounded-lg border border-gray-300 bg-white">
+
+            </div>
+
+          </div>
+
+
+          <!-- استاد -->
+
+          <div>
+
+            <h3 class="font-bold text-sm text-blue-800 mb-2">
+              👨‍🏫 استاد مکتب
+            </h3>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+
+              <input
+                type="text"
+                id="teacherName"
+                placeholder="نام استاد مکتب"
+                class="p-3 rounded-lg border border-gray-300 bg-white">
+
+              <input
+                type="text"
+                id="teacherPhone"
+                placeholder="شماره تماس استاد"
+                class="p-3 rounded-lg border border-gray-300 bg-white">
+
+            </div>
+
+          </div>
+
+
+          <!-- کمیته -->
+
+          <div>
+
+            <h3 class="font-bold text-sm text-purple-800 mb-2">
+              👥 نماینده کمیته مکتب
+            </h3>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+
+              <input
+                type="text"
+                id="committeeName"
+                placeholder="نام نماینده کمیته"
+                class="p-3 rounded-lg border border-gray-300 bg-white">
+
+              <input
+                type="text"
+                id="committeePhone"
+                placeholder="شماره تماس نماینده کمیته"
+                class="p-3 rounded-lg border border-gray-300 bg-white">
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- پیام -->
+      <div id="message"
+           class="hidden rounded-lg p-4 text-center text-sm font-bold">
+      </div>
+
+
+      <!-- Submit -->
+
+      <button
+        type="submit"
+        id="submitBtn"
+        class="submit-btn w-full bg-green-700 hover:bg-green-800 text-white font-bold py-4 rounded-xl shadow-lg">
+
+        📤 ثبت نهایی فرم
+
+      </button>
+
+
+      <p class="text-center text-xs text-gray-500">
+        لطفاً قبل از ثبت، تمام اطلاعات را بررسی کنید.
+      </p>
+
+    </form>
+
+  </div>
+
+</div>
+
+
+<script>
+
+/* ===============================
+   لیست شاخص‌های آموزشی
+================================ */
+
+const eduItems = [
+
+  "وضعیت مکان تدریس و فضای آموزشی",
+
+  "وضعیت وسایل و امکانات آموزشی",
+
+  "روش و کیفیت تدریس",
+
+  "رعایت و تکمیل سرفصل‌های آموزشی",
+
+  "برگزاری به‌موقع امتحانات",
+
+  "اجرای برنامه‌های ابلاغ‌شده از مرکز",
+
+  "اجرای فعالیت‌های تربیتی و پرورشی"
+
+];
+
+
+/* ===============================
+   لیست شاخص‌های نظم
+================================ */
+
+const orderItems = [
+
+  "نظم و انضباط اعضای کمیته مکتب",
+
+  "نظم و همکاری والدین",
+
+  "نظم و انضباط اساتید",
+
+  "رعایت مقررات و حضور و غیاب"
+
+];
+
+
+const ratings = [
+  "عالی",
+  "خوب",
+  "متوسط",
+  "ضعیف"
+];
+
+
+/* ===============================
+   ساخت سوالات
+================================ */
+
+function createQuestions(items, containerId, prefix) {
+
+  const container =
+    document.getElementById(containerId);
+
+  items.forEach((item, index) => {
+
+    const box = document.createElement("div");
+
+    box.className =
+      "border rounded-xl p-3 bg-white shadow-sm";
+
+    let html = `
+      <div class="text-sm font-bold text-gray-800 mb-3">
+        ${index + 1}. ${item}
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+    `;
+
+
+    ratings.forEach((rating, ratingIndex) => {
+
+      html += `
+        <label class="rating-option
+                      border rounded-lg p-2
+                      bg-gray-50
+                      text-center
+                      cursor-pointer
+                      text-xs">
+
+          <input
+            type="radio"
+            name="${prefix}_${index}"
+            value="${rating}"
+            ${ratingIndex === 0 ? "required" : ""}>
+
+          ${rating}
+
+        </label>
+      `;
+
+    });
+
+
+    html += `</div>`;
+
+    box.innerHTML = html;
+
+    container.appendChild(box);
+
+  });
+
+}
+
+
+createQuestions(
+  eduItems,
+  "eduContainer",
+  "edu"
+);
+
+
+createQuestions(
+  orderItems,
+  "orderContainer",
+  "order"
+);
+
+
+/* ===============================
+   گرفتن مقدار Radio
+================================ */
+
+function getRadioValue(name) {
+
+  const selected =
+    document.querySelector(
+      `input[name="${name}"]:checked`
+    );
+
+  return selected ? selected.value : "";
+
+}
+
+
+/* ===============================
+   جمع‌آوری اطلاعات فرم
+================================ */
+
+function collectFormData() {
+
+  const data = {
+
+    schoolName:
+      document.getElementById("schoolName").value.trim(),
+
+    schoolAddress:
+      document.getElementById("schoolAddress").value.trim(),
+
+    visitDate:
+      document.getElementById("visitDate").value.trim(),
+studentBoys: document.getElementById("studentBoys").value,
+studentGirls: document.getElementById("studentGirls").value,
+    strengths:
+      document.getElementById("strengths").value.trim(),
+
+    challenges:
+      document.getElementById("challenges").value.trim(),
+
+    suggestions:
+      document.getElementById("suggestions").value.trim(),
+
+    finalResult:
+      getRadioValue("finalResult"),
+
+    finalComment:
+      document.getElementById("finalComment").value.trim(),
+
+    inspectorName:
+      document.getElementById("inspectorName").value.trim(),
+
+    inspectorPhone:
+      document.getElementById("inspectorPhone").value.trim(),
+
+    teacherName:
+      document.getElementById("teacherName").value.trim(),
+
+    teacherPhone:
+      document.getElementById("teacherPhone").value.trim(),
+
+    committeeName:
+      document.getElementById("committeeName").value.trim(),
+
+    committeePhone:
+      document.getElementById("committeePhone").value.trim()
+
+  };
+
+
+  for (let i = 0; i < eduItems.length; i++) {
+
+    data[`edu_${i}`] =
+      getRadioValue(`edu_${i}`);
+
+  }
+
+
+  for (let i = 0; i < orderItems.length; i++) {
+
+    data[`order_${i}`] =
+      getRadioValue(`order_${i}`);
+
+  }
+
+
+  return data;
+
+}
+
+
+/* ===============================
+   ارسال فرم به Google Apps Script
+================================ */
+
+document
+  .getElementById("evaluationForm")
+  .addEventListener("submit", function(e) {
+
+    e.preventDefault();
+
+
+    const form = this;
+
+    if (!form.checkValidity()) {
+
+      form.reportValidity();
+
+      return;
+
+    }
+
+
+    const submitBtn =
+      document.getElementById("submitBtn");
+
+    const message =
+      document.getElementById("message");
+
+
+    submitBtn.disabled = true;
+
+    submitBtn.innerHTML =
+      "⏳ در حال ثبت اطلاعات...";
+
+    submitBtn.classList.add(
+      "opacity-60",
+      "cursor-not-allowed"
+    );
+
+
+    message.className =
+      "hidden";
+
+
+    const data =
+      collectFormData();
+
+
+    // =====================================================
+// ONLINE / OFFLINE SUBMIT
+// =====================================================
+
+if (!navigator.onLine) {
+
+  // انٹرنیٹ نہیں ہے
+  saveOfflineForm(data);
+
+  submitBtn.disabled = false;
+  submitBtn.innerHTML = "📤 ثبت نهایی فرم";
+
+  submitBtn.classList.remove(
+    "opacity-60",
+    "cursor-not-allowed"
+  );
+
+  message.className =
+    "block bg-yellow-100 text-yellow-800 border border-yellow-300 rounded-lg p-4 text-center font-bold";
+
+  message.innerHTML =
+    "📴 انٹرنیٹ موجود نہیں۔ فارم آپ کے موبائل/کمپیوٹر میں محفوظ ہوگیا۔ بعد میں Sync کیا جائے گا۔";
+
+  form.reset();
+
+  return;
+}
+
+
+// =====================================================
+// INTERNET موجود ہے
+// =====================================================
+
+
+const ENDPOINT = "https://script.google.com/macros/s/AKfycbw8hOwo551V1uAbL6FYUoF_d4fCTWNxYEx9AC2aJS-rltjoI72qsmO1tXhY6DaMnuqWEw/exec";
+
+if (!navigator.onLine) {
+
+  saveOfflineForm(data);
+
+  submitBtn.disabled = false;
+  submitBtn.innerHTML = "📤 ثبت نهایی فرم";
+
+  submitBtn.classList.remove(
+    "opacity-60",
+    "cursor-not-allowed"
+  );
+
+  message.className =
+    "block bg-yellow-100 text-yellow-800 border border-yellow-300 rounded-lg p-4 text-center font-bold";
+
+  message.innerHTML =
+    "📴 انٹرنیٹ موجود نہیں۔ فارم محفوظ ہوگیا۔ بعد میں Sync کریں۔";
+
+  form.reset();
+
+  updateOfflineStatus();
+
+  return;
+}
+
+
+// =====================================================
+// INTERNET موجود ہے
+// =====================================================
+
+fetch(ENDPOINT, {
+  method: "POST",
+  mode: "no-cors",
+  headers: {
+    "Content-Type": "text/plain;charset=utf-8"
+  },
+  body: JSON.stringify(data)
+})
+.then(function() {
+
+  submitBtn.disabled = false;
+
+  submitBtn.innerHTML =
+    "📤 ثبت نهایی فرم";
+
+  submitBtn.classList.remove(
+    "opacity-60",
+    "cursor-not-allowed"
+  );
+
+  message.className =
+    "block bg-green-100 text-green-800 border border-green-300 rounded-lg p-4 text-center font-bold";
+
+  message.innerHTML =
+    "✅ فرم با موفقیت ارسال شد.";
+
+  form.reset();
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+
+  setTimeout(function() {
+    message.className = "hidden";
+  }, 5000);
+
+})
+.catch(function(error) {
+
+  saveOfflineForm(data);
+
+  submitBtn.disabled = false;
+
+  submitBtn.innerHTML =
+    "📤 ثبت نهایی فرم";
+
+  submitBtn.classList.remove(
+    "opacity-60",
+    "cursor-not-allowed"
+  );
+
+  message.className =
+    "block bg-yellow-100 text-yellow-800 border border-yellow-300 rounded-lg p-4 text-center font-bold";
+
+  message.innerHTML =
+    "⚠️ اتصال برقرار نشد۔ فرم Offline محفوظ ہوگیا۔ بعد میں Sync کریں۔";
+
+  form.reset();
+
+  updateOfflineStatus();
+
+});
+
+// =====================================================
+// OFFLINE FORMS
+// =====================================================
+
+function getOfflineForms() {
+
+  const forms =
+    localStorage.getItem("offlineForms");
+
+  return forms ? JSON.parse(forms) : [];
+}
+
+
+// =====================================================
+// SAVE OFFLINE FORM
+// =====================================================
+
+function saveOfflineForm(data) {
+
+  const forms = getOfflineForms();
+
+  forms.push({
+    data: data,
+    savedAt: new Date().toISOString()
+  });
+
+  localStorage.setItem(
+    "offlineForms",
+    JSON.stringify(forms)
+  );
+
+  updateOfflineStatus();
+}
+
+
+// =====================================================
+// CLEAR OFFLINE FORMS
+// =====================================================
+
+function clearOfflineForms() {
+
+  localStorage.removeItem(
+    "offlineForms"
+  );
+
+  updateOfflineStatus();
+}
+
+
+// =====================================================
+// SYNC OFFLINE FORMS
+// =====================================================
+
+function syncOfflineForms() {
+
+  const forms = getOfflineForms();
+
+  if (forms.length === 0) {
+
+    alert(
+      "📦 کوئی Offline فارم محفوظ نہیں ہے۔"
+    );
+
+    return;
+  }
+
+
+  if (!navigator.onLine) {
+
+    alert(
+      "📴 ابھی Internet موجود نہیں ہے۔\n\n" +
+      "Internet آنے کے بعد Sync کریں۔"
+    );
+
+    return;
+  }
+
+
+  let index = 0;
+
+
+  function sendNext() {
+
+    if (index >= forms.length) {
+
+      clearOfflineForms();
+
+      alert(
+        "✅ تمام Offline Forms کامیابی سے Google Sheet میں محفوظ ہوگئے۔"
+      );
+
+      return;
+    }
+
+
+    const item = forms[index];
+
+
+    fetch(ENDPOINT, {
+
+      method: "POST",
+
+      mode: "no-cors",
+
+      headers: {
+        "Content-Type":
+          "text/plain;charset=utf-8"
+      },
+
+      body: JSON.stringify(item.data)
+
+    })
+
+    .then(function() {
+
+      index++;
+
+      updateOfflineStatus();
+
+      sendNext();
+
+    })
+
+    .catch(function(error) {
+
+      alert(
+        "❌ Sync میں مسئلہ آیا۔\n\n" +
+        "فارم ابھی محفوظ ہے۔\n\n" +
+        error.message
+      );
+
+    });
+
+  }
+
+
+  sendNext();
+
+}
+
+
+// =====================================================
+// OFFLINE STATUS
+// =====================================================
+
+function updateOfflineStatus() {
+
+  const forms =
+    getOfflineForms();
+
+  let status =
+    document.getElementById(
+      "offlineStatus"
+    );
+
+
+  if (!status) {
+
+    status =
+      document.createElement("div");
+
+    status.id =
+      "offlineStatus";
+
+    status.style.marginTop =
+      "12px";
+
+    status.style.padding =
+      "12px";
+
+    status.style.textAlign =
+      "center";
+
+    status.style.borderRadius =
+      "8px";
+
+    document
+      .getElementById("evaluationForm")
+      .appendChild(status);
+  }
+
+
+  if (forms.length > 0) {
+
+    status.style.display =
+      "block";
+
+    status.style.background =
+      "#dcfce7";
+
+    status.style.color =
+      "#166534";
+
+    status.innerHTML =
+      "☑️ Offline میں محفوظ فارم: " +
+      forms.length;
+
+  } else {
+
+    status.style.display =
+      "block";
+
+    status.style.background =
+      "#dcfce7";
+
+    status.style.color =
+      "#166534";
+
+    status.innerHTML =
+      "☑️ کوئی Offline فارم محفوظ نہیں ہے۔";
+
+  }
+
+}
+
+
+// =====================================================
+// SYNC BUTTON
+// =====================================================
+
+function createOfflineSyncButton() {
+
+  const form =
+    document.getElementById(
+      ""
+    );
+
+  if (!form) return;
+
+
+  if (
+    document.getElementById(
+      "offlineSyncBtn"
+    )
+  ) return;
+
+
+  const button =
+    document.createElement("button");
+
+  button.type =
+    "button";
+
+  button.id =
+    "offlineSyncBtn";
+
+  button.innerHTML =
+    "🔄 Offline Forms Sync کریں";
+
+  button.style.width =
+    "100%";
+
+  button.style.marginTop =
+    "12px";
+
+  button.style.padding =
+    "14px";
+
+  button.style.background =
+    "#2563eb";
+
+  button.style.color =
+    "white";
+
+  button.style.border =
+    "none";
+
+  button.style.borderRadius =
+    "10px";
+
+  button.style.fontWeight =
+    "bold";
+
+  button.style.fontSize =
+    "16px";
+
+  button.onclick =
+    syncOfflineForms;
+
+
+  form.appendChild(button);
+
+  updateOfflineStatus();
+
+}
+
+
+// =====================================================
+// PAGE LOAD
+// =====================================================
+
+window.addEventListener(
+  "load",
+  function() {
+
+    createOfflineSyncButton();
+
+    updateOfflineStatus();
+
+  }
+);
+
+
+// =====================================================
+// SERVICE WORKER
+// =====================================================
+
+if ("serviceWorker" in navigator) {
+
+  window.addEventListener(
+    "load",
+    function() {
+
+      navigator.serviceWorker
+        .register(
+          "./service-worker.js"
+        )
+        .then(function() {
+
+          console.log(
+            "Offline Service Worker فعال ہوگیا"
+          );
+
+        })
+        .catch(function(error) {
+
+          console.log(
+            "Service Worker Error:",
+            error
+          );
+
+        });
+
+    }
+  );
+
+}
+
+</script>
+
+</body>
+</html>
