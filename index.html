@@ -927,22 +927,22 @@ const ENDPOINT = "https://script.google.com/macros/s/AKfycbw8hOwo551V1uAbL6FYUoF
     return;
   }
 
-
   if (!navigator.onLine) {
 
-    alert(
-      "📴 ابھی Internet موجود نہیں ہے۔\n\n" +
-      "Internet آنے کے بعد Sync کریں۔"
-    );
+  alert(
+    "📴 ابھی Internet موجود نہیں ہے۔\n\n" +
+    "Internet آنے کے بعد Sync کریں۔"
+  );
 
-    return;
-  }
+  return;
+}
 
+const button = document.getElementById("offlineSyncBtn");
+if (button) button.disabled = true;
 
-  let index = 0;
+let index = 0;
 
-
-  function sendNext() {
+function sendNext() {
 
     if (index >= forms.length) {
 
